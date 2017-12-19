@@ -1,0 +1,59 @@
+<html style="background-image:url(../assets/imgs/main-slider1.png);">
+<div class="title">
+  
+  <h1 style="color: white; text-align: center;">Cadastrar Prato</h1>
+</div>
+<p *ngIf="validateForm" style="color: red; font-size: 15px;">{{mensagem}}</p>
+<p *ngIf="validateForm" style="color: green; font-size: 25px;">{{msg}}</p>  
+<table class="table table-bordered table-inverse">
+  <form>
+    <div class="form-group">
+      <label for="sel1">Restaurante</label>
+      <select name="comboRestaurante" [(ngModel)]="prato.RestauranteID" class="form-control">
+          <option
+           *ngFor="let restaurante of restaurantes"
+           [ngValue]="restaurante.RestauranteID">
+           {{restaurante.NomeRestaurante}}
+          </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Prato</label>
+      <input required
+       #nome="ngModel"
+       name="nome"
+       type="text"
+        class="form-control"
+      [(ngModel)]="prato.NomePrato"
+      [ngModelOptions]="{standalone: true}">
+      <span *ngIf="nome.invalid"class="form-control alert-danger">
+          Nome obrigatorio
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label>Preço</label>
+      <input  required
+      #nome="ngModel"
+      name="nome"
+       type="text" 
+       class="form-control"  
+      [(ngModel)]="prato.PrecoPrato"
+      [ngModelOptions]="{standalone: true}">
+      <span *ngIf="nome.invalid"class="form-control alert-danger">
+          Preço Obrigatorio
+      </span>
+    </div>
+    <div class="footer">
+          <a>
+            <button type="submit" class="btn btn-primary"
+             (click)="cadastrar()">Salvar</button>
+          </a>
+          <a href="prato/listaprato">
+            <button type="button" class="btn btn-primary">Voltar</button>
+          </a>
+    </div>
+  </form>
+</table>
+</html>

@@ -1,0 +1,49 @@
+<html style="background-image:url(../assets/imgs/main-slider1.png);">
+<p></p>
+<div class="topo">
+  <input style="background: black; color: white;" class="form-control" #textoPrato (keyup)="0" placeholder="Pesquisar"
+  />
+</div>
+<hr>
+<div class="title">
+  <h1 style="color: white; text-align:center;">Pratos</h1>
+</div>
+<div class="btn-group" role="group" aria-label="...">
+  <a href="prato/cadastroprato">
+    <button type="button" class="btn btn-primary">Cadastrar Novo Prato</button>
+  </a>
+</div>
+<hr>
+<p style="color:green;">{{msg}}</p>
+<p style="color:red;">{{mensagem}}</p>
+<table class="table table-bordered">
+  <thead class="thead-default">
+    <tr>
+      <th>ID</th>
+      <th>Restaurante</th>
+      <th>Prato</th>
+      <th>Preço</th>
+      <th>Funções</th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <tr *ngFor="let prato of (listPratos | filtroPrato: textoPrato.value )" >            
+      <th>{{prato.PratoID}}</th>
+      <td>{{prato.NomeRestaurante}}</td>
+      <td>{{prato.NomePrato}}</td>
+      <td>{{prato.PrecoPrato}}</td>
+      <td>
+        <a [routerLink]="['../editarprato', prato.PratoID]">
+          <button type="button" class="btn btn-primary">Editar</button>
+        </a>
+
+        <button type="button" class="btn btn-primary" (click)="excluir(prato)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+
+</html>

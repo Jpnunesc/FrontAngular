@@ -1,0 +1,16 @@
+
+.corpo{
+    align-items: center;
+    text-align: center;   
+}
+ th{
+     text-align: center;
+     color: white
+ }
+ td{
+    text-align: center;
+    color: white
+ }
+ button{
+    background: black;
+}

@@ -1,0 +1,32 @@
+<html style="background-image:url(../assets/imgs/main-slider1.png);">
+<div class="title">
+    <h1  style="color:white; text-align:center;">Cadastrar Restaurante</h1>
+  </div>
+  <p *ngIf="validateForm" style="color: red; font-size: 15px;">{{mensagem}}</p>
+  <p *ngIf="validateForm" style="color:green; font-size: 25px;">{{msg}}</p>  
+  <table class="table table-bordered table-inverse">
+    <form>
+      <div class="form-group">
+        <label >Nome do Restaurante</label>
+        <input required
+        #nome="ngModel"
+        name="nome"
+         type="text" 
+         class="form-control" 
+         [(ngModel)]="restaurante.NomeRestaurante" 
+         [ngModelOptions]="{standalone: true}">
+         <span *ngIf="nome.invalid"class="form-control alert-danger">
+            Nome obrigatorio
+        </span>
+      </div>
+      <div class="footer">
+        <a>
+          <button type="submit" class="btn btn-primary" (click)="cadastrar()">Salvar</button>
+        </a>
+        <a href="restaurante/listarestaurante">
+          <button type="button" class="btn btn-primary">Voltar</button>
+        </a>
+      </div>
+    </form>
+  </table>
+

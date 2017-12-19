@@ -1,0 +1,45 @@
+<html style="background-image:url(../assets/imgs/main-slider1.png);">
+<p></p>
+<div class="topo">
+    <input style="background: black; color:white;"  class="form-control" #textoRestaurante (keyup)="0" placeholder="Pesquisar" />
+</div>
+  <hr>
+  <p></p>
+<div class="title">
+  <h1 style="color: white; text-align:center;">Restaurantes</h1>
+</div>
+<p></p>
+<div class="btn-group" role="group" aria-label="...">
+  <a href="restaurante/cadastrorestaurante">
+    <button type="button" class="btn btn-primary">Cadastrar Novo Restaurante</button>
+  </a>
+</div>
+<p></p>
+<p style="color: green;">{{msg}}</p>
+<p style="color: red;">{{mensagem}}</p>
+<table class="table table-bordered">
+  <thead class="thead-default">
+    <tr>
+    <th>ID</th>
+    <th>Nome Restaurante</th>
+    <th>Funções</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let restaurante of (listRestaurante| filtroRestaurante: textoRestaurante.value )">
+      <th>{{restaurante.RestauranteID}}</th>
+      <td>{{restaurante.NomeRestaurante}}</td>
+      <td>
+          <a [routerLink]="['../editarrestaurante', restaurante.RestauranteID]">
+            <button type="button" class="btn btn-primary">Editar</button>
+          </a>
+          <button type="button" class="btn btn-primary" (click)="excluir(restaurante)()">Excluir</button>  
+        </td>
+
+    </tr>
+    
+  </tbody>
+
+</table>
+
+</html>
